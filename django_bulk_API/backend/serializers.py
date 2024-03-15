@@ -4,10 +4,10 @@ from .models import Product, ProductVariant
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['product_id', 'product_name', 'image']
 
 class ProductVariantSerializer(serializers.ModelSerializer):
-    foreign_key = ProductSerializer()
+    foreignKey = ProductSerializer()
     class Meta:
         model = ProductVariant
-        fields = '__all__'
+        fields = ['product_variant_id', 'product_sku', 'variant_name', 'price', 'variant_details', 'foreignKey']
