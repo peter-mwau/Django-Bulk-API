@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backend',
     'rest_framework',
+    'graphene_django'
 ]
+
+GRAPHENE = {
+    'SCHEMA': 'django_bulk_API.schema.schema',  # Your GraphQL schema
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -44,7 +50,7 @@ ROOT_URLCONF = 'django_bulk_API.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
